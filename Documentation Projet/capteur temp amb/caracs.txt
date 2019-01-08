@@ -1,0 +1,7 @@
+Capteur :Pt100 classe A
+Plage : 0-45°C , -10/+45°C
+Précision : +/- 0,3°C
+Convertisseur : intégré 4-20mA 2 fils
+Alimentation : 20 à 30 volts régulés
+Charge typique 500 Ohm
+Connexion par bornes à visser
