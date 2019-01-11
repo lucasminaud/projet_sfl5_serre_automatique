@@ -9,3 +9,7 @@ https://www.gotronic.fr/art-capteur-de-lumiere-tsl2591-22971.htm
 https://www.gotronic.fr/art-detecteur-de-lumiere-grove-101020030-20630.htm
 
 http://wiki.seeedstudio.com/Grove-Temperature_and_Humidity_Sensor_Pro/
+
+Ces deux capteurs sont viables pour exécuter correctement la tache qui leurs sera confiés, néanmoins, certaines caractéristiques ne sont pas nécessaire pour notre projet.
+Si le capteur le moins coûteux est capable d’effectuer la tache demandée ce sera sans doute le choix retenu.
+Le capteur le moins chère est le capteur TSL2591 avec un prix de 8.77€, sa plage de détection est comprise entre 188µLux et 88000Lux, ce qui correspond a 0.275 µW/m² et 128,84 W/m², 20 W/m² est bien compris dans cette plage-là. Le Spectre lumineux sélectionné est suffisant pour notre projet et le capteur peut se connecter facilement a une Raspberry ou une carte Arduino grâce à sa sortie I2C.
