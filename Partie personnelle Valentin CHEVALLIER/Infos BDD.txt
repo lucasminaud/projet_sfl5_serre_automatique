@@ -1,0 +1,7 @@
+------------------------------------------
+          #Base de données#
+
+ User : Admin_Aquisition
+ Mdp  : SFL5
+
+------------ PhPMyAdmin-------------------
