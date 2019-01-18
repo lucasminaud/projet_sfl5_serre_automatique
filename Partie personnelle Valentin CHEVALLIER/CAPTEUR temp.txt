@@ -1,2 +1,5 @@
 ARIA
 pt100 : https://www.omega.fr/prodinfo/pt100.html
+https://www.europages.fr/Sonde-temperature-dambiance-pour-horticulteur/ARIA-SARL/cpid-5343154.html
+
+carte 4-20ma libelium : https://www.cooking-hacks.com/documentation/tutorials/4-20ma-sensor-board-shield-tutorial-for-arduino-raspberry-pi-intel-galileo#step4
