@@ -3,92 +3,15 @@
 /* Maximum Lux: 88K */
 
 #include <Wire.h>
+#include <TH02_dev.h>
 #include <Adafruit_Sensor.h>
 #include "Adafruit_TSL2591.h"
+#include "Arduino.h"
+#include "Wire.h" 
 
-// Example for demonstrating the TSL2591 library - public domain!
 
-// connect SCL to analog 5
-// connect SDA to analog 4
-// connect Vin to 3.3-5V DC
-// connect GROUND to common ground
+Adafruit_TSL2591 tsl = Adafruit_TSL2591(2591);
 
-Adafruit_TSL2591 tsl = Adafruit_TSL2591(2591); // pass in a number for the sensor identifier (for your use later)
-
-/**************************************************************************/
-/*
-    Displays some basic information on this sensor from the unified
-    sensor API sensor_t type (see Adafruit_Sensor for more information)
-*/
-/**************************************************************************/
-void displaySensorDetails(void)
-{
-  sensor_t sensor;
-  tsl.getSensor(&sensor);
-  Serial.println("------------------------------------");
-  Serial.print  ("Sensor: TSL2591"); Serial.println(sensor.name);
-  Serial.print  ("Driver Ver: 1"); Serial.println(sensor.version);
-  Serial.print  ("Unique ID:  2591"); Serial.println(sensor.sensor_id);
-  Serial.print  ("Max Value: 88000.00"); Serial.print(sensor.max_value); Serial.println(" lux");
-  Serial.print  ("Min Value: 0.00"); Serial.print(sensor.min_value); Serial.println(" lux");
-  Serial.print  ("Resolution: 1.00"); Serial.print(sensor.resolution); Serial.println(" lux");  
-  Serial.println("------------------------------------");
-  Serial.println("");
-  delay(500);
-}
-
-/**************************************************************************/
-/*
-    Configures the gain and integration time for the TSL2591
-*/
-/**************************************************************************/
-void configureSensor(void)
-{
-  // You can change the gain on the fly, to adapt to brighter/dimmer light situations
-  //tsl.setGain(TSL2591_GAIN_LOW);    // 1x gain (bright light)
-  tsl.setGain(TSL2591_GAIN_MED);      // 25x gain
-  //tsl.setGain(TSL2591_GAIN_HIGH);   // 428x gain
-  
-  // Changing the integration time gives you a longer time over which to sense light
-  // longer timelines are slower, but are good in very low light situtations!
-  tsl.setTiming(TSL2591_INTEGRATIONTIME_100MS);  // shortest integration time (bright light)
-  //tsl.setTiming(TSL2591_INTEGRATIONTIME_200MS);
-  //tsl.setTiming(TSL2591_INTEGRATIONTIME_300MS);
-  //tsl.setTiming(TSL2591_INTEGRATIONTIME_400MS);
-  //tsl.setTiming(TSL2591_INTEGRATIONTIME_500MS);
-  //tsl.setTiming(TSL2591_INTEGRATIONTIME_600MS);  // longest integration time (dim light)
-
-  /* Display the gain and integration time for reference sake */  
-  Serial.println("------------------------------------");
-  Serial.print  ("Gain:     ");
-  tsl2591Gain_t gain = tsl.getGain();
-  switch(gain)
-  {
-    case TSL2591_GAIN_LOW:
-      Serial.println("1x (Low)");
-      break;
-    case TSL2591_GAIN_MED:
-      Serial.println("25x (Medium)");
-      break;
-    case TSL2591_GAIN_HIGH:
-      Serial.println("428x (High)");
-      break;
-    case TSL2591_GAIN_MAX:
-      Serial.println("9876x (Max)");
-      break;
-  }
-  Serial.print  ("Timing:       ");
-  Serial.print((tsl.getTiming() + 1) * 100, DEC); 
-  Serial.println(" ms");
-  Serial.println("------------------------------------");
-  Serial.println("");
-}
-
-/**************************************************************************/
-/*
-    Program entry point for the Arduino sketch
-*/
-/**************************************************************************/
 void setup(void) 
 {
   Serial.begin(9600);
@@ -104,12 +27,32 @@ void setup(void)
     Serial.println("No sensor found ... check your wiring?");
     while (1);
   }
+  delay(150);
+  TH02.begin();
+  delay(100);
     
   /* Display some basic information on this sensor */
-  displaySensorDetails();
-  
-  /* Configure the sensor */
-  configureSensor();
+  sensor_t sensor;
+  tsl.getSensor(&sensor);
+  Serial.println("------------------------------------");
+  Serial.print  ("Sensor: TSL2591"); Serial.println(sensor.name);
+  Serial.print  ("Driver Ver: 1"); Serial.println(sensor.version);
+  Serial.print  ("Unique ID:  2591"); Serial.println(sensor.sensor_id);
+  Serial.print  ("Max Value: 88000.00"); Serial.print(sensor.max_value); Serial.println(" lux");
+  Serial.print  ("Min Value: 0.00"); Serial.print(sensor.min_value); Serial.println(" lux");
+  Serial.print  ("Resolution: 1.00"); Serial.print(sensor.resolution); Serial.println(" lux");  
+  Serial.println("------------------------------------");
+  Serial.println("");
+  delay(500);
+ 
+  tsl.setGain(TSL2591_GAIN_MED);
+  tsl.setTiming(TSL2591_INTEGRATIONTIME_100MS);
+  Serial.print  ("Gain: 25x (Medium)");
+  Serial.print  ("Timing:       ");
+  Serial.print((tsl.getTiming() + 1) * 100, DEC); 
+  Serial.println(" ms");
+  Serial.println("------------------------------------");
+  Serial.println("");
     
   // Now we're ready to get readings ... move on to loop()!
 }
@@ -165,8 +108,6 @@ void unifiedSensorAPIRead(void)
   sensors_event_t event;
   tsl.getEvent(&event);
  
-  /* Display the results (light is measured in lux) */
-  Serial.print("[ "); Serial.print(event.timestamp); Serial.print(" ms ] ");
   if ((event.light == 0) |
       (event.light > 4294966000.0) | 
       (event.light <-4294966000.0))
@@ -178,6 +119,7 @@ void unifiedSensorAPIRead(void)
   }
   else
   {
+    Serial.print(" Luminosité: ");
     Serial.print(event.light); Serial.println(" lux");
   }
 }
@@ -193,6 +135,14 @@ void loop(void)
   // simpleRead(); 
   // advancedRead();
   unifiedSensorAPIRead();
-  
-  delay(250);
+  float temper = TH02.ReadTemperature(); 
+  Serial.println("Temperature: ");   
+  Serial.print(temper);
+  Serial.println("C\r\n");
+     
+  float humidity = TH02.ReadHumidity();
+  Serial.println("Humidity: ");
+  Serial.print(humidity);
+  Serial.println("%\r\n");
+  delay(5000);
 }
