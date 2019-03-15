@@ -1,4 +1,5 @@
-IP: 10.16.37.161
+IP_BDD: 10.16.37.161
+user : password = sfl5 : sfl5db
 
 ID: sfl5serre (php)    sfl5db (base de données)
 
