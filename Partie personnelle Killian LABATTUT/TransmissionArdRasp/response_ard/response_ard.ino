@@ -17,7 +17,7 @@ void loop()
     for (int i=1 ; i<6 ; ++i)
     {
       message[i] = mySerial.read();
-    }*/
+    }
     Serial.write(message);
     digitalWrite(13, HIGH);  
     delay(500);     
