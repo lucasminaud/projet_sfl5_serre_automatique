@@ -5,7 +5,7 @@
  
 <?php
   try {
-    $base = new PDO('mysql:host=localhost; dbname=testconsole', 'root', '');
+    $base = new PDO('mysql:host=10.16.37.161; dbname=BDD_Serre_Automatique', 'sfl5', 'sfl5db');
   }
   catch(exception $e) {
     die('Erreur '.$e->getMessage());
