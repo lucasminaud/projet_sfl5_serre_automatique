@@ -70,11 +70,10 @@ void loop()
     Serial.print(resistance);
     Serial.println(" Ohm");
 
-    int temperature = 0;
-    temperature=map(value,194,971,0,100);
-    float f1 = 0;
-    f1 = temperature;
-    Serial.print(f1 + 10);
+    float temperature = 0;
+    temperature = 45*((current-4)/16);
+    Serial.print(temperature);
+    Serial.println("°C");
     Serial.print("\n");
     
         
