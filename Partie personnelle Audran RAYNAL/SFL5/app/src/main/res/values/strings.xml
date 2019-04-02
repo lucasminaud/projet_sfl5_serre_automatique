@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">SFL5</string>
+    <string name="capteur_1">Capteur 1</string>
+    <string name="todo">TODO</string>
+    <string name="capteur_4">Capteur 4</string>
+    <string name="capteur_3">Capteur 3</string>
+    <string name="capteur_2">Capteur 2</string>
+    <string name="an_mom_tre_girouette">Anémomètre-girouette</string>
+    <string name="humidit_int_rieure">Humidité intérieure</string>
+    <string name="temp_rature_eau_chaude">Température eau chaude</string>
+    <string name="temp_rature_int_rieure">Température intérieure</string>
+    <string name="capteur_de_lumi_re">Capteur de lumière</string>
+    <string name="pluviom_tre">Pluviomètre</string>
+    <string name="gh_monitoring">GH MONITORING</string>
+</resources>
