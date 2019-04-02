@@ -31,11 +31,8 @@
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a class="active" href="index.html">Home</a>
-            <a href="temps_réel.php">temps réel</a>
-            <a href="services.html">évolution de la serre</a>
-            <a href="products.html">Products</a>
-            <a href="rates.html">Rates</a>
-            <a href="blog-page.html">Blog</a>
+            <a href="temps_reel.php">temps réel</a>
+            <a href="services.php">évolution de la serre</a>
         </div>
         <!-- Nav section Start -->
         <nav id="navbar">
