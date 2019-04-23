@@ -1,0 +1,29 @@
+Bouteille de 1L, 
+totalement remplie mais la quantité d'eau totale peut varier dans de très 
+lègere proportion
+
+
+1ER TEST : Débit moyen lent
+
+143 impulsions
+
+
+2EME TEST: Débit rapide, tout versé d'un seul coup
+
+150 impulsions
+
+3E TEST : ~~~~
+
+154 impulsions
+
+
+Moyenne des 3 tests : 
+143 + 150 + 154 = 447
+447 / 3 = 149
+
+Moyenne d'impulsion pour une quantité de 1 litre d'eau : 149
+1 litre divisé par 149 = 0,0067114094 litre
+
+Surface du "cône" du pluviomètre : 214 cm²
+Selon la documentation, il y a une impulsion pour 0.01 inches, soit 0.254 mm.
+Un adaptateur métrique peut être installé 
