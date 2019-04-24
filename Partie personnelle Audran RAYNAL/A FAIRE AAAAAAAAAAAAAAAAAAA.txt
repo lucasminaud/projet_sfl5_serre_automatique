@@ -1,0 +1,13 @@
+APP ANDROID :
+-Faire une page Php hebergé sur le serveur web, avec un ficher text sous format Json,
+L'app récupera ce text, et il faudra "traduire" et situer (balader) dans le code.
+
+-Pour les pastilles de couleurs:
+
+setBackground -> selon les conditions, le background change:
+visuellement la couleur de la pastille changera.
+
+
+PLUVIO :
+-a chaque impulsion, afficher qqch, pour prouver que tout fonctionne (((-FAIT-)))
+-Etalonnage : faire des tests pour savoir combien de mm avec une impulsion
