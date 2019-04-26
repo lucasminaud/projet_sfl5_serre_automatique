@@ -29,3 +29,5 @@ Selon la documentation, il y a une impulsion pour 0.01 inches, soit 0.254 mm.
 Un adaptateur métrique peut être installé 
 
 
+0.01 pouces par impulsion, 0.254 mm
+0.254*149 = 37.84600 millimètre
