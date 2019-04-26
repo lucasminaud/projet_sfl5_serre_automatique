@@ -1,10 +1,3 @@
-/*
-description:     Basic Rain Gauge with arduino with serial monitoring
-                 Reports the daily-rain and rain-in-last-hour in inches
-acknowledgement: part of the code copied and modified from
-                 http://www.instructables.com/id/Arduino-Weather-Station-Part3-Rain/
-liscence:        GNU GPL. https://www.gnu.org/licenses/gpl.html
-*/
 
 #include "RTClib.h"
 #include <Wire.h>
@@ -35,10 +28,10 @@ void setup(void) {
 void loop(void){
   DateTime now = rtc.now();
     
-  // ++++++++++++++++++++++++ Count the bucket tips ++++++++++++++++++++++++++++++++
+  // ++++++++++++++++++++++++ compte les impulsions ++++++++++++++++++++++++++++++++
   if ((bucketPositionA==false)&&(digitalRead(RainPin)==HIGH)){
     bucketPositionA=true;
-    dailyRain+=bucketAmount;                               // update the daily rain
+    dailyRain+=bucketAmount;                               // met à jour la pluie journalière
     Serial.println();
     Serial.print(" Impulsion !" );
   }
