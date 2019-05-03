@@ -15,7 +15,7 @@ class CAPTEUR:
                                        database=base)
     def perAcquisition(self,idCap):
 	curseur = self.connexionBDD.cursor()
-	data  = curseur.execute("SELECT `Periode_Acquisition` FROM `Capteur` WHERE `id` = %s " %(idCap))
+	data  = curseur.execute("SELECT `Periode_Acquisition` FROM `Capteur` WHERE `id` = %s " %idCap)
 	perAcquisition = curseur.fetchall()
 	return perAcquisition[0][0]
 	curseur.close()
@@ -61,19 +61,23 @@ class BDD:
         
 class SERIAL:
     
-    def __init__(self,idCap,perAcquisition):
-
-	    	
-	self.timeNow = time.time()
-	self.message = ("%s,%s,%s"%(idCap,self.timeNow,perAcquisition))
-        
-    def envoiMessage(self):
-        ser.write(self.message.encode())
-	print(self.message)
+    	def __init__(self):
+		self.ser = serial.Serial('/dev/ttyACM0',baudrate=9600)
+		self.timeNow = time.time()
+			
+   	def envoiMessage(self):
+		
+		self.message = "{},{},{}".format(self.id, self.timeNow, self.per)
+        	self.ser.write(self.message.encode())
+		print("envoi : " + self.message)
 	
-    def recupereValeur(self):
-	mesrecu
-	mesprec = mesrecu
-	while (mesrecu == mesprec):
-		mesrecu = ser.readline()
-		print(self.message)
+    	def recupereValeur(self):
+
+		mesrecu = self.ser.readline().decode('UTF-8')
+		return mesrecu
+
+    	def setId(self, id):
+		self.id = id
+		 
+	def setPer(self, per):
+		self.per = per

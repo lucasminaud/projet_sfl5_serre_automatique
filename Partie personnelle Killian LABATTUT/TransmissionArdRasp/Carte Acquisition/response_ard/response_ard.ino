@@ -17,7 +17,7 @@ class PERIODE
     
     if ( timeNow - timeBefore >= perAcquisition )
     {
-      Serial.println(timeNow - timeBefore);
+      
       timeBefore = timeNow;
       return true;
     }
@@ -55,9 +55,12 @@ void setup()
   init_capteurs();
 }
 void loop()
-{ 
-      //String data = Serial.readString();
-      String data = "3,1556876122.17,15";
+{
+   String data = "";
+   data = Serial.readString();
+   if (data != "")
+   {
+      String data = Serial.readString();
       int slot = 0;
       infoTab[id] = "";
       infoTab[temps] = "";
@@ -106,11 +109,12 @@ void loop()
           }
       else
       {
-      /*valeur_capteur = 0;
-      Serial.println(infoTab[id] + " " + valeur_capteur);*/
+      valeur_capteur = 0;
+      Serial.println(infoTab[id] + " " + valeur_capteur);
       }
    
     /*digitalWrite(13, HIGH);  
     delay(10);     
     digitalWrite(13, LOW);*/
+   }
   }
