@@ -1,7 +1,6 @@
 #include <SoftwareSerial.h>
 //String message = "Hello";
 char message[6] = {'H','E','L','L','O','\n'};
-char message2 = "1";
 /*
 void envoyer(String stringData) { // Used to serially push out a String with Serial.write()
   char * buffer;
@@ -26,7 +25,7 @@ void loop()
   while (true)
   {
     //envoyer(message);
-    Serial.write(message2);
+    Serial.write(message);
     digitalWrite(13, HIGH);
     delay(1000);
     digitalWrite(13, LOW);
