@@ -136,11 +136,12 @@ void loop(void)
   // advancedRead();
   unifiedSensorAPIRead();
   float temper = TH02.ReadTemperature(); 
-  Serial.println("\r\n");
+  
      
   float humidity = TH02.ReadHumidity();
   Serial.println("Humidity: ");
   Serial.print(humidity);
+  Serial.println(" -----------");
   Serial.println("%\r\n");
   delay(5000);
 }
