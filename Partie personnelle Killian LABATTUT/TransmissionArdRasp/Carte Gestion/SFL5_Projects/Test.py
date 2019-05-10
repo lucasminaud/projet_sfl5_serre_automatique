@@ -11,6 +11,12 @@ from Classes import SERIAL
 #Cap.envoiMessage()
 
 while True:
-	ser = serial.Serial('/dev/ttyACM0',baudrate=9600)
-	valeur = ser.readline()
-	print (valeur)
+#	ser = serial.Serial('/dev/ttyACM0',baudrate=9600)
+#	valeur = ser.readline()
+#	print (valeur)
+#	print (len(valeur))
+
+	word = 	'1,1.00'
+	tab = word.split(',')
+	print tab[0]
+	print tab[1]

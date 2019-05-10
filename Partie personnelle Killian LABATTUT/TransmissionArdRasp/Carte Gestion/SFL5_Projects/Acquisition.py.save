@@ -16,22 +16,18 @@ MyDB = BDD("10.16.37.161","sfl5","sfl5db","BDD_Serre_Automatique")
 i = 1
 Cap = SERIAL()
 
+
 while True :
 	perAcqu = MyDB.recuperationPeriodeAcquisition(i)
 	Cap.envoiMessage(i,perAcqu)
 	valeur = Cap.recupereValeur()
+	print (valeur)
 	tab = valeur.split(',')
-	if (len(valeur) > 5):
-		if (len(tab[0]) > 0 and len(tab[1]) > 2):
-#			print(tab[0])
-#			print(tab[1])
-			print (valeur)
-			MyDB.insererReleve(tab[0],tab[1])
-			MyDB.insererEtatCapteurPeriodeAcquisition(i, 1, perAcqu)
-		else:
-			if(len(tab[0]) >= 30):
-				print (valeur)
-
+#	if (len(tab[0]) > 0 and len(tab[1]) > 2):
+#	print (tab[0])
+#	print (tab[1])
+		#MyDB.insererReleve(tab[0],tab[1])
+		#MyDB.insererEtatCapteurPeriodeAcquisition(i, 1, perAcqu)
 	if i == 7:
 		i = 1
 	else:

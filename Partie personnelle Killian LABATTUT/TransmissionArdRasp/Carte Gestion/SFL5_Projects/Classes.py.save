@@ -1,3 +1,4 @@
+
 #!/usr/bin/python3.4
 # coding: utf-8
 #Programme : Librairies et classes
@@ -35,7 +36,7 @@ class BDD:
         #3 arguments : id du capteur valeur du capteur
         
         curseur = self.connexionBDD.cursor()
-        curseur.execute("INSERT INTO `Releve` (`Valeur`,`Date`,`Capteur_id`) VALUES (%s,NOW(),%s)"%(capVal,idCap))
+        curseur.execute("INSERT INTO `Releve` (`Valeur`,`Date`,`Capteur_id`) VALUES (%s,NOW(),%s)"%(idCap,capVal))
         self.connexionBDD.commit()
         curseur.close()
     def insererEtatCapteurPeriodeAcquisition(self, idCap, etat, perAcquisition):
