@@ -141,7 +141,7 @@ void loop(void)
   float humidity = TH02.ReadHumidity();
   Serial.println("Humidity: ");
   Serial.print(humidity);
+  Serial.println("%\r\n"); 
   Serial.println(" -----------");
-  Serial.println("%\r\n");
   delay(5000);
 }
