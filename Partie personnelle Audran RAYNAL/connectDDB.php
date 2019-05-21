@@ -1,7 +1,5 @@
-
-	
-
 <?php
+	
    $con=mysqli_connect("10.16.37.161", "sfl5", "sfl5db");
 
    if (mysqli_connect_errno($con)) {
@@ -21,4 +19,26 @@
    mysqli_close($con);
 ?>
 
-	
+<?php
+$db = "test";
+$user = $_POST["user"];
+$pass = $_POST["pass"];
+$host = "localhost";
+
+$conn = mysqli_connect($host,$user ,$pass, $db);
+if($conn)
+{
+	echo "connecte...!";
+	$q = "select * from user where user like '$user' and pass like '$pass'";
+	$result = mysqli_query($conn , $q);
+	if(mysqli_num_rows($result) > 0)
+	{
+		echo "login sucessfull...!";
+	}
+	else{
+		echo "echec login...!";
+		
+		
+		
+
+?>
