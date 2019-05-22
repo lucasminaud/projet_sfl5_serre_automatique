@@ -1,10 +1,3 @@
-/*
-description:     Basic Rain Gauge with arduino with serial monitoring
-                 Reports the daily-rain and rain-in-last-hour in inches
-acknowledgement: part of the code copied and modified from
-                 http://www.instructables.com/id/Arduino-Weather-Station-Part3-Rain/
-liscence:        GNU GPL. https://www.gnu.org/licenses/gpl.html
-*/
 
 #include "RTClib.h"
 #include <Wire.h>
@@ -12,7 +5,7 @@ liscence:        GNU GPL. https://www.gnu.org/licenses/gpl.html
 
 
 bool bucketPositionA = false;             // one of the two positions of tipping-bucket               
-const double bucketAmount = 0.01610595;   // inches equivalent of ml to trip tipping-bucket
+const double bucketAmount = 0.254;   // inches equivalent of ml to trip tipping-bucket
 double dailyRain = 0.0;                   // rain accumulated for the day
 double hourlyRain = 0.0;                  // rain accumulated for one hour
 double minutRain = 0.0;                   // rain accumulated for one minute
@@ -35,10 +28,10 @@ void setup(void) {
 void loop(void){
   DateTime now = rtc.now();
     
-  // ++++++++++++++++++++++++ Count the bucket tips ++++++++++++++++++++++++++++++++
+  // ++++++++++++++++++++++++ compte les impulsions ++++++++++++++++++++++++++++++++
   if ((bucketPositionA==false)&&(digitalRead(RainPin)==HIGH)){
     bucketPositionA=true;
-    dailyRain+=bucketAmount;                               // update the daily rain
+    dailyRain+=bucketAmount;                               // met à jour la pluie journalière
     Serial.println();
     Serial.print(" Impulsion !" );
   }
@@ -62,11 +55,11 @@ void loop(void){
     Serial.print(now.minute());
     Serial.print(":  Quantité totale de pluie tombé dans la journée = ");
     Serial.print(dailyRain,8);                            // the '8' ensures the required accuracy
-    Serial.println(" inches");
+    Serial.println(" mm");
     Serial.println();
     Serial.print("     :  Quantité de pluie tombée dans la dernière heure = ");
     Serial.print(hourlyRain,8);
-    Serial.println(" inches");
+    Serial.println(" mm");
     Serial.println();
     
     first = false;                                        // execute calculations only once per hour

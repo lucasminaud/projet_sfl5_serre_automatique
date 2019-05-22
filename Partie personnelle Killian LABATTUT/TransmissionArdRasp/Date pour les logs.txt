@@ -1,0 +1,3 @@
+Convertir le nb de secondes en date regarder time.ctime()
+
+https://www.programiz.com/python-programming/time

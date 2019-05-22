@@ -119,7 +119,7 @@ void unifiedSensorAPIRead(void)
   }
   else
   {
-    Serial.print(" Luminosité: ");
+    Serial.print("Luminosité: ");
     Serial.print(event.light); Serial.println(" lux");
   }
 }
@@ -136,13 +136,12 @@ void loop(void)
   // advancedRead();
   unifiedSensorAPIRead();
   float temper = TH02.ReadTemperature(); 
-  Serial.println("Temperature: ");   
-  Serial.print(temper);
-  Serial.println("C\r\n");
+  
      
   float humidity = TH02.ReadHumidity();
   Serial.println("Humidity: ");
   Serial.print(humidity);
-  Serial.println("%\r\n");
+  Serial.println("%\r\n"); 
+  Serial.println(" -----------");
   delay(5000);
 }
