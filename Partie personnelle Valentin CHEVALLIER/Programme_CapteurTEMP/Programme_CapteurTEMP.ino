@@ -22,7 +22,7 @@ float conversion (float current)
   if(current >= 4 && current <= 20)
   {
     float Temp = 0;     
- Temp = 45*((current-4)/16);  //formule de conversion
+ Temp = 100*((current-4)/16);  //formule de conversion
 return Temp;
 }
 
@@ -86,10 +86,10 @@ if(conversion(courant3) == 200)
 }
 void loop()
 {
- Get_temp();
- delay(100);
- //Test_conversion();
- //delay(100000);
+ //Get_temp();
+ //delay(100);
+ Test_conversion();
+ delay(100000);
 }
 
 
