@@ -1,0 +1,45 @@
+protected void jsonParse()
+    {
+        //mTextViewResult.append("Debut\n");
+        String url = "http://88.136.244.147:8080/regulation/actuator.php";
+        String url2 = "http://10.16.37.161/AndroidStudio/connecPHPv2.php";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //mTextViewResult.append("onResponse\n\n");
+                try {
+                    //mTextViewResult.append("TRY\n\n");
+                    JSONArray jsonArray = new JSONArray(response);
+                    for(int i=0;i<jsonArray.length();i++){
+                        JSONObject actionneur = jsonArray.getJSONObject(i);
+
+                        int id = actionneur.getInt("id");
+                        int port = actionneur.getInt("port");
+                        String name = actionneur.getString("name");
+                        //int peAction = actionneur.getInt("periode_action");
+                        //mTextViewResult.append("TRY\n\n");
+                        //String lastHourUsed = actionneur.getString("heure_derniere_utilisation");
+                        mTextViewResult.append(String.valueOf(id) + ", " + name + ", " + String.valueOf(port) + "\n\n");
+                        //mTextViewResult.append("Affichage\n\n");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    mTextViewResult.append(e.toString());
+                    mTextViewResult.append("EXCEPTION");
+                }
+                mUnitTextViewResult.append("Ok");
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                mTextViewResult.append("onErrorResponse\n");
+                mTextViewResult.append(error.toString());
+                mTextViewResult.append("\n");
+            }
+        }){
+
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
