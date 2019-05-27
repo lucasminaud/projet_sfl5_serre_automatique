@@ -36,9 +36,11 @@ if($conn)
 		echo "login sucessfull...!";
 	}
 	else{
-		echo "echec login...!";
+		echo "login failed...!";
+	}
+	else{
 		
+		echo "Not Connected...!";
+	}
 		
-		
-
 ?>

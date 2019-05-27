@@ -24,7 +24,9 @@ Moyenne des 3 tests :
 Moyenne d'impulsion pour une quantité de 1 litre d'eau : 149
 1 litre divisé par 149 = 0,0067114094 litre
 
-Surface du "cône" du pluviomètre : 214 cm²
+//////Surface du "cône" du pluviomètre : 214 cm²//////
+
+
 Selon la documentation, il y a une impulsion pour 0.01 inches, soit 0.254 mm.
 Un adaptateur métrique peut être installé 
 
