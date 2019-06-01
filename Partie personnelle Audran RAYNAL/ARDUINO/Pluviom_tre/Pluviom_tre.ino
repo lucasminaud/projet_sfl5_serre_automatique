@@ -1,7 +1,7 @@
 
 #include "RTClib.h"
 #include <Wire.h>
-#define RainPin 2                         // The Rain input is connected to digital pin 2 on the arduino
+#define RainPin 12                         // The Rain input is connected to digital pin 2 on the arduino
 
 
 bool bucketPositionA = false;             // one of the two positions of tipping-bucket
@@ -11,7 +11,7 @@ double hourlyRain = 0.0;                  // rain accumulated for one hour
 double minutRain = 0.0;                   // rain accumulated for one minute
 double impulsion = 0.0;                   // nombre d'impulsion
 double dailyRain_till_LastHour = 0.0;     // rain accumulated for the day till the last hour
-bool first;                               // as we want readings of the (MHz) loops only at the 0th moment
+bool first = true;                               // as we want readings of the (MHz) loops only at the 0th moment
 
 RTC_Millis rtc;                           // software RTC time
 
@@ -41,9 +41,9 @@ void loop(void) {
   }
   // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-  if (now.minute() != 0) first = true;                    // after the first minute is over, be ready for next read
+  //if (now.minute() != 0) first = true;                    // after the first minute is over, be ready for next read
 
-  if (now.minute() == 0 && first == true) {
+  if (first == true) {
 
     hourlyRain = dailyRain - dailyRain_till_LastHour;      // calculate the last hour's rain
     dailyRain_till_LastHour = dailyRain;                   // update the rain till last hour for next calculation
@@ -53,16 +53,16 @@ void loop(void) {
     Serial.print(now.hour());
     Serial.print(":");
     Serial.print(now.minute());
-    Serial.print(":  Quantité totale de pluie tombé dans la journée = ");
+    Serial.print(":  Hauteur totale de pluie tombée dans la journée = ");
     Serial.print(dailyRain, 8);                           // the '8' ensures the required accuracy
     Serial.println(" mm");
     Serial.println();
-    Serial.print("     :  Quantité de pluie tombée dans la dernière heure = ");
+    Serial.print("     :  Hauteur de pluie tombée dans la dernière heure = ");
     Serial.print(hourlyRain, 8);
     Serial.println(" mm");
     Serial.println();
 
-    first = false;                                        // execute calculations only once per hour
+    first = true;                                        // execute calculations only once per hour
   }
 
   if (now.hour() == 0) {

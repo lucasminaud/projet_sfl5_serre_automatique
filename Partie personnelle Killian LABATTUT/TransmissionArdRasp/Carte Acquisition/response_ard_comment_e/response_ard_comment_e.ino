@@ -91,10 +91,10 @@ void loop()
            switch(int_idCap)
            {
         case 1:
-            valeur_capteur = rand() % 100;//mettre la fonction rapportant la valeur du capteur 1                  //A ce stade du projet l'intégration des capteurs n'est pas réalisé.
+            valeur_capteur = rand() % 100;//mettre la fonction rapportant la valeur du capteur 1 //A ce stade du projet l'intégration des capteurs n'est pas réalisé.
             break;
         case 2:
-            valeur_capteur = rand() % 100;//mettre la fonction rapportant la valeur du capteur 2                  // Les valeurs sont choisis aléatoirement pour pouvoir effectué des tests.
+            valeur_capteur = rand() % 100;//mettre la fonction rapportant la valeur du capteur 2 // Les valeurs sont choisis aléatoirement pour pouvoir effectué des tests.
             break;
         case 3:
             valeur_capteur = rand() % 100;//mettre la fonction rapportant la valeur du capteur 3
@@ -112,15 +112,15 @@ void loop()
             valeur_capteur = rand() % 100;//mettre la fonction rapportant la valeur du capteur 7
             break;
            }
-      Serial.println(infoTab[id] + "," + valeur_capteur);                                                       // La valeur du capteur est envoyée via le port série
+      Serial.println(infoTab[id] + "," + valeur_capteur);           // La valeur du capteur est envoyée via le port série
       digitalWrite(13, HIGH);
-      delay(50);                                                                                                // La led clignote on commentera ces lignes pour plus de rapidité   
+      delay(50);                                                    // La led clignote on commentera ces lignes pour plus de rapidité   
       digitalWrite(13, LOW);
       }
       else
            {
             valeur_capteur = 0;
-            Serial.println("Le capteur " + infoTab[id] + " doit encore attendre,");                             // Si la fonction de calcul retourne "false" un message d'attente envoyé ainsi qu'une valeur de 0
+            Serial.println("Le capteur " + infoTab[id] + " doit encore attendre,");// Si la fonction de calcul retourne "false" un message d'attente envoyé ainsi qu'une valeur de 0
            }
    
     /*digitalWrite(13, HIGH);  
