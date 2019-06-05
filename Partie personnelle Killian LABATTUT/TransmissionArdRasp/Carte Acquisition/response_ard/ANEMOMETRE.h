@@ -1,4 +1,3 @@
-#include <math.h>
 #define WindSensorPin (2) // The pin location of the anemometer sensor
 
     
@@ -10,7 +9,7 @@ class ANEMOM
       static unsigned long Rotations; // cup rotation counter used in interrupt routine
       static unsigned long ContactBounceTime; // Timer to avoid contact bounce in interrupt routine
   
-  void getSpeed()
+  double getSpeed()
   {
    Rotations = 0; // Set Rotations count to 0 ready for calculations
   sei(); // Enables interrupts
@@ -18,7 +17,7 @@ class ANEMOM
   cli(); // Disable interrupts
   WindSpeed = Rotations * 2.25;
   WindSpeed = WindSpeed * 1.60934; //to m/s
-  Serial.println(WindSpeed);
+  return WindSpeed;
   }
 
 
@@ -37,24 +36,14 @@ class ANEMOM
     attachInterrupt(digitalPinToInterrupt(WindSensorPin), isr_rotation, FALLING);
   }
 
-  void Speed()
+  double Speed()
   {
     init();
-    getSpeed();
+    double Speed = getSpeed();
+    return Speed;
   }
  
 };
 
 unsigned long ANEMOM::Rotations = 0; // Déclaration des variable : static
-unsigned long ANEMOM::ContactBounceTime = 0;  
-
-ANEMOM Anemo;
-
-void setup() {
-Serial.begin(9600);
-}
-
-void loop()
-{
-  Anemo.Speed();
-}
+unsigned long ANEMOM::ContactBounceTime = 0; 
