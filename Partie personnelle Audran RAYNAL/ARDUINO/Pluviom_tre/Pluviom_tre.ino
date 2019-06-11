@@ -1,7 +1,7 @@
 
 #include "RTClib.h"
 #include <Wire.h>
-#define RainPin 12                         // The Rain input is connected to digital pin 2 on the arduino
+#define RainPin 10                        // The Rain input is connected to digital pin 2 on the arduino
 
 
 bool bucketPositionA = false;             // one of the two positions of tipping-bucket

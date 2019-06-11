@@ -1,3 +1,5 @@
+#include <RTClib.h>
+
 class PERIODE
 {
   public :
@@ -14,7 +16,7 @@ class PERIODE
       timeBefore = timeNow;
       return true;
     }
-    else
+    if ( timeNow - timeBefore < perAcquisition )
     {
       return false;
     }

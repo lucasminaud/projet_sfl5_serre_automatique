@@ -8,10 +8,13 @@ SoftwareSerial mySerial(10,11);
 #include "CLASSES.h"  // include les classes des capteurs
 #include "GIROUETTE.h"
 #include "ANEMOMETRE.h"
-
+#include "HYGRO.h"
+#include "LUMIN.h"
 
 GIROUETTE Girou;      // Instanciation des Capteurs
 ANEMOM Anemo;
+HYGRO H1;
+LUMIN L1;
 
 
 PERIODE *tab[nbcapteur];
@@ -71,25 +74,25 @@ void loop()
            switch(int_idCap)
            {
         case 1:
-            valeur_capteur = Anemo.Speed(); //mettre la fonction rapportant la valeur du capteur 1
+            valeur_capteur = -24.00;//Anemo.Speed(); //mettre la fonction rapportant la valeur du capteur 1
             break;
         case 2:
             valeur_capteur = Girou.DirectionVent();//mettre la fonction rapportant la valeur du capteur 2
             break;
         case 3:
-            valeur_capteur = rand() % 100;//mettre la fonction rapportant la valeur du capteur 3
+            valeur_capteur = -24.00;//mettre la fonction rapportant la valeur du capteur 3
             break;
         case 4:
-            valeur_capteur = rand() % 100;//mettre la fonction rapportant la valeur du capteur 4
+            valeur_capteur = -24.00;//mettre la fonction rapportant la valeur du capteur 4
             break;
         case 5:
-            valeur_capteur = rand() % 100;//mettre la fonction rapportant la valeur du capteur 5
+            valeur_capteur = H1.ReadHumidite();//mettre la fonction rapportant la valeur du capteur 5
             break;
         case 6:
-            valeur_capteur = rand() % 100;//mettre la fonction rapportant la valeur du capteur 6
+            valeur_capteur = L1.unifiedSensorAPIRead();//mettre la fonction rapportant la valeur du capteur 6
             break;
         case 7:
-            valeur_capteur = rand() % 100;//mettre la fonction rapportant la valeur du capteur 7
+            valeur_capteur = -24.00;//mettre la fonction rapportant la valeur du capteur 7
             break;
            }
       Serial.println(infoTab[id] + "," + valeur_capteur);
