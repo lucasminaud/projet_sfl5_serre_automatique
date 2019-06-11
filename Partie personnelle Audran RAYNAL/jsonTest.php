@@ -2,16 +2,16 @@
 
 
 $data = '{
-	"name": "Aragorn",
-	"race": "Human"
+	"capteur": "pluvio",
+	"etat": "1"
 }';
 
-$character = json_decode($data);
+$capt = json_decode($data);
 
 
-echo $character->name;
+echo $capt->capteur;
 
 
-$url = 
+$url = "10.16.37.161";
 
 ?>
